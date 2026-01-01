@@ -155,8 +155,8 @@ class ChromeDriverManager:
         # 窗口大小
         chrome_options.add_argument('--window-size=1920,1080')
 
-        # 添加文件保存位置
-        chrome_options.add_argument(f'--user-data-dir=/home/seluser/google-chrome-data')
+        # 添加文件保存位置（本地模式下使用Chrome默认目录）
+        # chrome_options.add_argument(f'--user-data-dir=/home/seluser/google-chrome-data')
         
         # 调试选项
         if self.config.debug_mode:

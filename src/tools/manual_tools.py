@@ -9,6 +9,7 @@
 import os
 import json
 import time
+import asyncio
 import pandas as pd
 from datetime import datetime
 from pathlib import Path
@@ -73,7 +74,7 @@ class ManualTools:
                 collectors.append(("Dashboard", lambda dim: collect_dashboard_data(driver, save_data=True)))
             if data_type in ["content", "all"]:
                 from src.xiaohongshu.data_collector.content_analysis import collect_content_analysis_data
-                collectors.append(("Content", lambda dim: collect_content_analysis_data(driver, save_data=True)))
+                collectors.append(("Content", lambda dim: asyncio.run(collect_content_analysis_data(driver, save_data=True))))
             if data_type in ["fans", "all"]:
                 from src.xiaohongshu.data_collector.fans import collect_fans_data
                 collectors.append(("Fans", lambda dim: collect_fans_data(driver, save_data=True)))
